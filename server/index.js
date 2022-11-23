@@ -7,15 +7,15 @@ const pool = require('./db')
 app.use(cors())
 app.use(express.json())
 
-/*****  ROUTES *****/
+/*****  ROUTES  *****/
 
 // GET all courses
-app.get("/courses", async (req, res) => {
+app.get('/courses', async (req, res) => {
   try {
     const allCourses = await pool.query("SELECT * FROM courses")  // response OBJECT
     res.json(allCourses.rows)
   } catch (err) {
-    console.error('ERROR IN POST COURSE: ', err.message)
+    console.error('ERROR IN GET COURSE: ', err.message)
   }
 })
 
@@ -47,13 +47,36 @@ app.post('/courses', async (req, res) => {
 })
 
 // UPDATE a course
+app.put('/courses/:id', async (req, res) => {
+  try {
+    const { name } = req.body
+    const { id } = req.params
 
+    const updateCourse = await pool.query("UPDATE courses SET name = $1 WHERE id = $2",
+      [ name, id ]
+    )
+    res.json("Course updated!")
+  } catch (err) {
+    console.error('ERROR IN PUT COURSE: ', err.message)
+  }
+})
 
 // DELETE a course
+app.delete('/courses/:id', async (req, res) => {
+  try {
+    const { id } = req.params
 
+    const deleteCourse = await pool.query("DELETE FROM courses WHERE id = $1",
+      [ id ]
+    )
+    res.json("Course deleted.")
+  } catch (err) {
+    console.error('ERROR IN DELETE COURSE: ', err.message)
+  }
+})
 
 // GET all scores of one course
-app.get("/scores/:courseID", async (req, res) => {
+app.get('/scores/:courseID', async (req, res) => {
   try {
     const { courseID } = req.params
     
@@ -62,7 +85,7 @@ app.get("/scores/:courseID", async (req, res) => {
     )
     res.json(allScores.rows)
   } catch (err) {
-    console.error('ERROR IN POST COURSE: ', err.message)
+    console.error('ERROR IN GET SCORES: ', err.message)
   }
 })
 
@@ -82,11 +105,19 @@ app.post('/scores', async (req, res) => {
   }
 })
 
-// UPDATE a score
-
-
 // DELETE a score
+app.delete('/scores/:id', async (req, res) => {
+  try {
+    const { id } = req.params
 
+    const deleteCourse = await pool.query("DELETE FROM scores WHERE id = $1",
+      [ id ]
+    )
+    res.json("Score deleted.")
+  } catch (err) {
+    console.error('ERROR IN DELETE COURSE: ', err.message)
+  }
+})
 
 
 app.listen(5000, () => {
