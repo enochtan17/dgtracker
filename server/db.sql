@@ -14,3 +14,5 @@ CREATE TABLE scores(
   scores integer[18],
   total integer
 );
+
+TRUNCATE TABLE courses RESTART IDENTITY CASCADE;
