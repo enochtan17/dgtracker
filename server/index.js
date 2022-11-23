@@ -53,12 +53,12 @@ app.post('/courses', async (req, res) => {
 
 
 // GET all scores of one course
-app.get("/scores", async (req, res) => {
+app.get("/scores/:courseID", async (req, res) => {
   try {
-    const { course_id } = req.body
+    const { courseID } = req.params
     
     const allScores = await pool.query("SELECT * FROM scores WHERE course_id = ($1)",
-      [ course_id ]
+      [ courseID ]
     )
     res.json(allScores.rows)
   } catch (err) {
