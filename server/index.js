@@ -57,7 +57,7 @@ app.get("/scores/:courseID", async (req, res) => {
   try {
     const { courseID } = req.params
     
-    const allScores = await pool.query("SELECT * FROM scores WHERE course_id = ($1)",
+    const allScores = await pool.query("SELECT * FROM scores WHERE course_id = $1",
       [ courseID ]
     )
     res.json(allScores.rows)
