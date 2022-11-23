@@ -9,7 +9,7 @@ app.use(express.json())
 
 app.get("/todos", async (req, res) => {
   try {
-    const allTodos = await pool.query("SELECT * FROM dgtracker")
+    const allTodos = await pool.query("SELECT * FROM dgtracker")  // dgtracker is the db name. should use table name, like courses
     console.log('all', allTodos)
   } catch (err) {
     console.error(err.message)
