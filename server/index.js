@@ -53,10 +53,34 @@ app.post('/courses', async (req, res) => {
 
 
 // GET all scores of one course
+app.get("/scores", async (req, res) => {
+  try {
+    const { course_id } = req.body
+    
+    const allScores = await pool.query("SELECT * FROM scores WHERE course_id = ($1)",
+      [ course_id ]
+    )
+    res.json(allScores.rows)
+  } catch (err) {
+    console.error('ERROR IN POST COURSE: ', err.message)
+  }
+})
 
 
 // ADD a score
+app.post('/scores', async (req, res) => {
+  try {
+    const { course_id, player, scores, total } = req.body
 
+    const newScore = await pool.query(
+      "INSERT INTO scores (course_id, player, scores, total) VALUES($1, $2, $3, $4) RETURNING *",
+      [ course_id, player, scores, total ]
+    )
+    res.json(newScore.rows[0])
+  } catch (err) {
+    console.error('ERROR IN POST SCORE: ', err.message)
+  }
+})
 
 // UPDATE a score
 

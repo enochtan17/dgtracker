@@ -9,7 +9,7 @@ CREATE TABLE courses(
 
 CREATE TABLE scores(
   id SERIAL PRIMARY KEY,
-  courses_id integer REFERENCES courses (id),
+  course_id integer REFERENCES courses (id),
   player text,
   scores integer[18],
   total integer
