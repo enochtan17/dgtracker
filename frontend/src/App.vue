@@ -1,12 +1,29 @@
-<script setup>
-</script>
-
+<!-- eslint-disable -->
 <template>
-  <header>
+  <h1>
     hello world
-  </header>
+  </h1>
+
+  <div>
+    <!-- {{ courses }} -->
+  </div>
 
 </template>
+
+<script>
+import axios from 'axios'
+import { api } from './constants'
+
+export default {
+  data: () => ({
+    courses: []
+  }),
+  async created() {
+    const { data: coursesArray } = await axios.get(`${api}/courses`)
+    console.log('course array', coursesArray)
+  }
+}
+</script>
 
 <style scoped>
 </style>
