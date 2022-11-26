@@ -4,23 +4,30 @@
     hello world
   </h1>
 
-  <div>
-    <!-- {{ courses }} -->
+  <div
+    v-for="course in this.courseStore.courses.length"
+    :key="`${course.id}`"
+  >
+    <!-- <course-list></course-list> -->
   </div>
 
 </template>
 
 <script>
-import axios from 'axios'
-import { api } from './constants'
+import { useCourseStore } from './stores/courseStore'
+import { mapStores } from 'pinia'
+// import CourseList from './components/CourseList.vue'
+
 
 export default {
-  data: () => ({
-    courses: []
-  }),
+  components: {
+    // CourseList
+  },
+  computed: {
+    ...mapStores(useCourseStore)
+  },
   async created() {
-    const { data: coursesArray } = await axios.get(`${api}/courses`)
-    console.log('course array', coursesArray)
+    await this.courseStore.getCourses()
   }
 }
 </script>
