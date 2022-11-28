@@ -59,6 +59,24 @@
     data() {
       return {
         name: '',
+        holeOne: null,
+        holeTwo: null,
+        holeThree: null,
+        holeFour: null,
+        holeFive: null,
+        holeSix: null,
+        holeSeven: null,
+        holeEight: null,
+        holeNine: null,
+        holeTen: null,
+        holeEleven: null,
+        holeTwelve: null,
+        holeThirteen: null,
+        holeFourteen: null,
+        holeFifteen: null,
+        holeSixteen: null,
+        holeSeventeen: null,
+        holeEighteen: null,
       }
     },
     methods: {
