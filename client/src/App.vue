@@ -1,5 +1,14 @@
 <template>
   <main>
+    <div
+      v-if="modalStore.addCourseModal"
+    >
+      <div
+        class="blackout"
+        @click="modalStore.addCourseModal = false"
+      ></div>
+      <AddCourseDialog />
+    </div>
     <h1>Disc Golf Score Tracker</h1>
 
     <!-- Add Course Modal -->
@@ -8,13 +17,6 @@
     >
       Add Course
     </button>
-    <v-dialog
-      v-if="modalStore.addCourseModal"
-      dark
-    >
-      {{ modalStore.addCourseModal }}
-      <AddCourseDialog />
-    </v-dialog>
 
     <div
       v-for="course in courseStore.courses"
@@ -53,3 +55,18 @@
     }
   }
 </script>
+
+<style>
+  body {
+    margin: 0;
+  }
+  .blackout {
+    margin: 0;
+    position: fixed;
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    opacity: 0.5;
+    z-index: 100;
+  }
+</style>
