@@ -1,4 +1,5 @@
 <template>
+  <div>{{ name }}</div>
   <div
     class="modal-div"
   >
@@ -55,6 +56,11 @@
 
   export default {
     name: 'ACForm',
+    data() {
+      return {
+        name: '',
+      }
+    },
     methods: {
 
     },
@@ -96,7 +102,7 @@
   .form-contents input {
     padding: 5px;
     margin-bottom: 5px;
-    color: whitesmoke;
+    background-color: whitesmoke;
     border-radius: 10px;
     border: 1px solid black;
   }
