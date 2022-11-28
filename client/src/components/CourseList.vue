@@ -50,9 +50,7 @@
     },
     async created() {
       await this.scoreStore.getScores(this.course.id)
-      console.log('c-list', this.scoreStore.scores)
 
-      console.log('name?', this.course.name)
       const rawData = this.scoreStore.scores[this.course.name]
 
       const theseScores = Object.values(rawData)
