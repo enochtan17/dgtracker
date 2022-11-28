@@ -9,6 +9,7 @@ export const useCourseStore = defineStore('course', {
   }),
   actions: {
     async getCourses() {
+      this.courses = []
       const { data } = await axios.get(`${api}/courses`)
 
       for (const key in data) {
@@ -16,6 +17,11 @@ export const useCourseStore = defineStore('course', {
 
         this.courses.push(course)
       }
+    },
+    async addCourse(body) {
+      await axios.post(`${api}/courses`, body)
+
+      await this.getCourses()
     }
   }
 })

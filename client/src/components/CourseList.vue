@@ -51,10 +51,10 @@
     async created() {
       await this.scoreStore.getScores(this.course.id)
 
-      const rawData = this.scoreStore.scores[this.course.name]
+      // const rawData = this.scoreStore.scores[this.course.name]
 
-      const theseScores = Object.values(rawData)
-      console.log('testing?', theseScores)
+      // const theseScores = Object.values(rawData)
+      // console.log('testing?', theseScores)
     }
   }
 </script>

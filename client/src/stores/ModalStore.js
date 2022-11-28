@@ -8,7 +8,6 @@ export const useModalStore = defineStore('modal', {
   actions: {
     toggleAddCourse() {
       this.addCourseModal = !this.addCourseModal
-      console.log('after', this.addCourseModal)
     },
     toggleAddScore() {
       this.addScoreModal = !this.addScoreModal
