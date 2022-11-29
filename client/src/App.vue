@@ -10,11 +10,13 @@
       <AddCourseDialog />
     </div>
 
-    <h1>Disc Golf Score Tracker</h1>
+    <h1 style="margin-left: 10px;">
+      Disc Golf Score Tracker
+    </h1>
 
     <!-- Add Course Modal -->
     <button
-      style="cursor: pointer;"
+      style="cursor: pointer; margin-left: 10px;"
       @click="toggleAC()"
     >
       Add Course

@@ -1,7 +1,8 @@
 <template>
-  <h4>Player Score {{ course.id }}</h4>
+  <h4>{{ entry.player }}</h4>
 
-  <!-- <div>{{ entry }}</div> -->
+  <div>Scores: {{ entry.scores }}</div>
+  <div>Total: {{ entry.total }}</div>
 
   <div>
     <!-- <div

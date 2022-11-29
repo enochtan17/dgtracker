@@ -26,7 +26,7 @@
 
   <hr />
   <!-- scores -->
-  <div class="dflex">
+  <div style="margin-left: 10px;">
     <div
       v-for="(hole, idx) in course.scores"
       :key="idx"
@@ -36,14 +36,16 @@
     </div>
   </div>
 
-  <hr/>
   <!-- total -->
-  <div>{{ course.total }}</div>
+  <div style="margin-left: 10px;">
+    Total: {{ course.total }}
+  </div>
 
   <hr/>
 
   <!-- player scores of course -->
   <div
+    style="margin-left: 10px;"
     v-for="entry in this.scoreStore.scores[this.course.name]"
   >
     <PlayerScores :course="course" :entry="entry" />
