@@ -3,17 +3,9 @@
 
   <div>Scores: {{ entry.scores }}</div>
   <div>Total: {{ entry.total }}</div>
+  <button
 
-  <div>
-    <!-- <div
-      v-for="(score, idx) in entry.scores"
-      :key="idx"
-    >
-      <div>Hole {{ idx + 1 }}</div>
-      {{ score }}
-    </div> -->
-  </div>
-
+  >Delete Entry</button>
   <hr/>
 </template>
 

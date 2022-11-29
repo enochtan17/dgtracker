@@ -44,6 +44,12 @@
   <hr/>
 
   <!-- player scores of course -->
+  <button
+    style="cursor: pointer;"
+    @click="e => openAddScore(e)"
+  >
+    Add your score to {{ course.name }}
+  </button>
   <div
     style="margin-left: 10px;"
     v-for="entry in this.scoreStore.scores[this.course.name]"
