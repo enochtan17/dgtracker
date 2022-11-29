@@ -1,26 +1,26 @@
 <template>
   <v-app>
-    <div
-      v-if="modalStore.addCourseModal"
+    <v-dialog
+      v-model="modalStore.addCourseModal"
+      max-width="500px"
     >
-      <div
-        class="blackout"
-        @click="modalStore.addCourseModal = false"
-      ></div>
       <AddCourseDialog />
-    </div>
+  </v-dialog>
 
+    <!-- Add Course Modal -->
+  <v-container class="d-flex justify-space-between align-center">
     <h1 style="margin-left: 10px;">
       Disc Golf Score Tracker
     </h1>
-
-    <!-- Add Course Modal -->
-    <button
+    <v-btn
       style="cursor: pointer; margin-left: 10px;"
       @click="toggleAC()"
+      color="green"
     >
       Add Course
-    </button>
+      <v-icon icon="mdi:mdi-plus" />
+    </v-btn>
+  </v-container>
 
     <div
       v-for="course in courseStore.courses"
