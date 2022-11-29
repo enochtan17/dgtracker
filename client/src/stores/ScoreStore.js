@@ -24,6 +24,11 @@ export const useScoreStore = defineStore('score', {
 
         this.scores[courseName].push(score)
       }
+    },
+    async deleteScore(id, courseID) {
+      await axios.delete(`${api}/scores/${id}`)
+      
+      await this.getScores(courseID)
     }
   },
   // getters: {

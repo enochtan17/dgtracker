@@ -4,7 +4,7 @@
   <div>Scores: {{ entry.scores }}</div>
   <div>Total: {{ entry.total }}</div>
   <button
-
+    @click="e => handleDelete(e)"
   >Delete Entry</button>
   <hr/>
 </template>
@@ -22,6 +22,16 @@
     methods: {
       async getAllScoresofOneCourse(courseID) {
         await this.scoreStore.getScores(courseID)
+      },
+      async handleDelete(e) {
+        e.preventDefault()
+
+        const playerID = this.entry.id
+        const courseID = this.course.id
+
+        if (confirm('Are you sure you want to delete your round?')) {
+          await this.scoreStore.deleteScore(playerID, courseID)
+        }
       }
     },
     computed: {

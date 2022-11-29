@@ -2,10 +2,6 @@
   <div
     v-if="modalStore.editCourseModal"
   >
-    <!-- <div
-      class="blackout"
-      @click="modalStore.editCourseModal = false"
-    ></div> -->
     <EditCourseDialog :course="course" />
   </div>
 
