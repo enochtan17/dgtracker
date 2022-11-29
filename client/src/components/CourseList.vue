@@ -1,9 +1,16 @@
 <template>
   <!-- course name -->
-  <h4>
-    {{ course.name }}
-  </h4>
+  <div class="course-bar">
+    <h4>
+      {{ course.name }}
+    </h4>
+    <div class="course-buttons">
+      <button>Edit</button>
+      <button>Delete</button>
+    </div>
+  </div>
 
+  <hr />
   <!-- scores -->
   <div class="dflex">
     <div
@@ -58,3 +65,21 @@
     }
   }
 </script>
+
+<style scoped>
+  .course-bar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .course-buttons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .course-buttons button {
+    margin: 5px;
+    cursor: pointer;
+  }
+</style>

@@ -122,7 +122,6 @@
         this.modalStore.toggleAddCourse()
       },
       cancelForm() {
-        console.log(18, this.holeEighteen)
         this.modalStore.toggleAddCourse()
       },
       disableFormSubmit() {
@@ -190,5 +189,10 @@
     font-weight: bold;
     text-align: center;
     cursor: pointer;
+  }
+
+  .submit {
+    cursor: pointer;
+    margin-bottom: 10px;
   }
 </style>
