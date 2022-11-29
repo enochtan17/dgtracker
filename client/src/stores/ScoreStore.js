@@ -27,8 +27,13 @@ export const useScoreStore = defineStore('score', {
     },
     async deleteScore(id, courseID) {
       await axios.delete(`${api}/scores/${id}`)
-      
+
       await this.getScores(courseID)
+    },
+    async addScore(body) {
+      await axios.post(`${api}/scores`, body)
+
+      await this.getScores(body.course_id)
     }
   },
   // getters: {
