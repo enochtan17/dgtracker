@@ -11,10 +11,10 @@
       {{ course.name }}
     </h4>
     <div class="course-buttons">
-      <button
+      <v-btn
         v-if="!modalStore.editCourseModal"
         @click="e => handleEdit(e)"
-      >Edit</button>
+      >Edit</v-btn>
       <button
         @click="e => handleDelete(e)"
       >Delete</button>

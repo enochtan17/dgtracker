@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <v-app>
     <div
       v-if="modalStore.addCourseModal"
     >
@@ -29,7 +29,7 @@
       <hr/>
       <CourseList :course="course" />
     </div>
-  </main>
+  </v-app>
 </template>
 
 <script>
