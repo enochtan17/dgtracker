@@ -14,6 +14,7 @@
 
     <!-- Add Course Modal -->
     <button
+      style="cursor: pointer;"
       @click="toggleAC()"
     >
       Add Course
