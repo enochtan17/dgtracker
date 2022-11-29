@@ -12,6 +12,7 @@
     </h4>
     <div class="course-buttons">
       <button
+        v-if="!modalStore.editCourseModal"
         @click="e => handleEdit(e)"
       >Edit</button>
       <button
@@ -41,11 +42,19 @@
 
   <!-- player scores of course -->
   <button
+    v-if="!modalStore.addScoreModal"
     style="cursor: pointer;"
     @click="e => openAddScore(e)"
   >
     Add your score to {{ course.name }}
   </button>
+
+  <div
+    v-if="modalStore.addScoreModal"
+  >
+    <AddScoreDialog :course="course" />
+  </div>
+
   <div
     style="margin-left: 10px;"
     v-for="entry in this.scoreStore.scores[this.course.name]"
@@ -57,6 +66,7 @@
 <script>
   import PlayerScores from './PlayerScores.vue'
   import EditCourseDialog from './EditCourseDialog.vue'
+  import AddScoreDialog from './AddScoreDialog.vue'
   import { useCourseStore } from '../stores/CourseStore'
   import { useScoreStore } from '../stores/ScoreStore'
   import { useModalStore } from '../stores/ModalStore'
@@ -69,7 +79,8 @@
     ],
     components: {
       PlayerScores,
-      EditCourseDialog
+      EditCourseDialog,
+      AddScoreDialog
     },
     methods: {
       async handleEdit(e) {
@@ -81,6 +92,10 @@
         if (confirm('Are you sure you want to delete this course?')) {
           await this.courseStore.deleteCourse(this.course.id)
         }
+      },
+      openAddScore(e) {
+        e.preventDefault()
+        this.modalStore.toggleAddScore()
       }
     },
     computed: {
