@@ -22,13 +22,14 @@
     </v-btn>
   </v-container>
 
-    <div
+    <v-container
+      class="ma-0"
       v-for="course in courseStore.courses"
       :key="course.id"
     >
       <hr/>
       <CourseList :course="course" />
-    </div>
+    </v-container>
   </v-app>
 </template>
 

@@ -268,7 +268,6 @@
       },
       cancelForm() {
         this.modalStore.toggleAddCourse()
-        // console.log(this.holeEight)
       },
       reset() {
         this.$refs.form.reset()
