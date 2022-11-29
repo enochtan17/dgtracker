@@ -6,7 +6,7 @@
       class="blackout"
       @click="modalStore.editCourseModal = false"
     ></div> -->
-    <EditCourseDialog />
+    <EditCourseDialog :course="course" />
   </div>
 
   <!-- course name -->

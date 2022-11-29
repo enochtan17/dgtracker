@@ -9,6 +9,7 @@
       ></div>
       <AddCourseDialog />
     </div>
+
     <h1>Disc Golf Score Tracker</h1>
 
     <!-- Add Course Modal -->
@@ -39,7 +40,7 @@
     name: 'App',
     components: {
       CourseList,
-      AddCourseDialog
+      AddCourseDialog,
     },
     methods: {
       toggleAC() {

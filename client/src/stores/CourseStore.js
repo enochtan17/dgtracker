@@ -28,8 +28,10 @@ export const useCourseStore = defineStore('course', {
 
       await this.getCourses()
     },
-    async editCourse(id) {
-      await axios.put(`${api}/courses/${id}`)
+    async editCourse(id, body) {
+      await axios.put(`${api}/courses/${id}`, body)
+
+      await this.getCourses()
     }
   }
 })

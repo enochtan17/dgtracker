@@ -33,17 +33,26 @@
 
   export default {
     name: 'ECForm',
+    props: [
+      'course'
+    ],
     data() {
       return {
         disabled: true,
-        name: ''
+        name: this.course.name
       }
     },
     methods: {
       async handleSubmit(e) {
         e.preventDefault()
 
-        console.log(this.name)
+        const id = this.course.id
+        const body = {
+          name: this.name
+        }
+
+        await this.courseStore.editCourse(id, body)
+        this.modalStore.toggleEditCourse()
       },
       cancelForm() {
         this.modalStore.toggleEditCourse()
