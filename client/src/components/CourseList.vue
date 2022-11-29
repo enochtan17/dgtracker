@@ -1,12 +1,26 @@
 <template>
+  <div
+    v-if="modalStore.editCourseModal"
+  >
+    <!-- <div
+      class="blackout"
+      @click="modalStore.editCourseModal = false"
+    ></div> -->
+    <EditCourseDialog />
+  </div>
+
   <!-- course name -->
   <div class="course-bar">
     <h4>
       {{ course.name }}
     </h4>
     <div class="course-buttons">
-      <button>Edit</button>
-      <button>Delete</button>
+      <button
+        @click="e => handleEdit(e)"
+      >Edit</button>
+      <button
+        @click="e => handleDelete(e)"
+      >Delete</button>
     </div>
   </div>
 
@@ -38,8 +52,10 @@
 
 <script>
   import PlayerScores from './PlayerScores.vue'
+  import EditCourseDialog from './EditCourseDialog.vue'
   import { useCourseStore } from '../stores/CourseStore'
   import { useScoreStore } from '../stores/ScoreStore'
+  import { useModalStore } from '../stores/ModalStore'
   import { mapStores, mapWritableState } from 'pinia'
 
   export default {
@@ -48,12 +64,23 @@
       'course',
     ],
     components: {
-      PlayerScores
+      PlayerScores,
+      EditCourseDialog
     },
     methods: {
+      async handleEdit(e) {
+        e.preventDefault()
+        this.modalStore.toggleEditCourse()
+      },
+      async handleDelete(e) {
+        e.preventDefault()
+        if (confirm('Are you sure you want to delete this course?')) {
+          await this.courseStore.deleteCourse(this.course.id)
+        }
+      }
     },
     computed: {
-      ...mapStores(useCourseStore, useScoreStore),
+      ...mapStores(useCourseStore, useScoreStore, useModalStore),
     },
     async created() {
       await this.scoreStore.getScores(this.course.id)

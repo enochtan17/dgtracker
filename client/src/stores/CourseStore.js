@@ -22,6 +22,14 @@ export const useCourseStore = defineStore('course', {
       await axios.post(`${api}/courses`, body)
 
       await this.getCourses()
+    },
+    async deleteCourse(id) {
+      await axios.delete(`${api}/courses/${id}`)
+
+      await this.getCourses()
+    },
+    async editCourse(id) {
+      await axios.put(`${api}/courses/${id}`)
     }
   }
 })

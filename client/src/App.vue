@@ -23,7 +23,6 @@
       :key="course.id"
     >
       <hr/>
-      {{ course }}
       <CourseList :course="course" />
     </div>
   </main>

@@ -1,7 +1,7 @@
 <template>
   <h4>Player Score {{ course.id }}</h4>
 
-  <div>{{ entry }}</div>
+  <!-- <div>{{ entry }}</div> -->
 
   <div>
     <!-- <div
