@@ -63,6 +63,9 @@
     },
     computed: {
       ...mapStores(useCourseStore, useModalStore)
+    },
+    created() {
+      console.log('in edit modal', this.course)
     }
   }
 </script>

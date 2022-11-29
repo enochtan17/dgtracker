@@ -1,10 +1,4 @@
 <template>
-  <div
-    v-if="modalStore.editCourseModal"
-  >
-    <EditCourseDialog :course="course" />
-  </div>
-
   <!-- course name -->
   <div class="course-bar">
     <h4>
@@ -12,12 +6,19 @@
     </h4>
     <div class="course-buttons">
       <v-btn
-        v-if="!modalStore.editCourseModal"
+        color="warning"
         @click="e => handleEdit(e)"
-      >Edit</v-btn>
-      <button
+      >
+        Edit
+        <v-icon icon="mdi:mdi-pencil" />
+      </v-btn>
+      <v-btn
+        color="error"
         @click="e => handleDelete(e)"
-      >Delete</button>
+      >
+        Delete
+        <v-icon icon="mdi:mdi-delete" />
+      </v-btn>
     </div>
   </div>
 
@@ -41,13 +42,12 @@
   <hr/>
 
   <!-- player scores of course -->
-  <button
-    v-if="!modalStore.addScoreModal"
+  <v-btn
     style="cursor: pointer;"
     @click="e => openAddScore(e)"
   >
     Add your score to {{ course.name }}
-  </button>
+  </v-btn>
 
   <div
     v-if="modalStore.addScoreModal"
@@ -85,6 +85,7 @@
     methods: {
       async handleEdit(e) {
         e.preventDefault()
+        console.log(this.course.id)
         this.modalStore.toggleEditCourse()
       },
       async handleDelete(e) {

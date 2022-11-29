@@ -5,22 +5,22 @@
       max-width="500px"
     >
       <AddCourseDialog />
-  </v-dialog>
+    </v-dialog>
 
     <!-- Add Course Modal -->
-  <v-container class="d-flex justify-space-between align-center">
-    <h1 style="margin-left: 10px;">
-      Disc Golf Score Tracker
-    </h1>
-    <v-btn
-      style="cursor: pointer; margin-left: 10px;"
-      @click="toggleAC()"
-      color="green"
-    >
-      Add Course
-      <v-icon icon="mdi:mdi-plus" />
-    </v-btn>
-  </v-container>
+    <v-container class="d-flex justify-space-between align-center">
+      <h1 style="margin-left: 10px;">
+        Disc Golf Score Tracker
+      </h1>
+      <v-btn
+        style="cursor: pointer; margin-left: 10px;"
+        @click="toggleAC()"
+        color="green"
+      >
+        Add Course
+        <v-icon icon="mdi:mdi-plus" />
+      </v-btn>
+    </v-container>
 
     <v-container
       class="ma-0"
@@ -28,6 +28,12 @@
       :key="course.id"
     >
       <hr/>
+      <v-dialog
+        v-model="modalStore.editCourseModal"
+        max-width="500px"
+      >
+        <EditCourseDialog :course="course" />
+      </v-dialog>
       <CourseList :course="course" />
     </v-container>
   </v-app>
@@ -36,6 +42,7 @@
 <script>
   import CourseList from './components/CourseList.vue'
   import AddCourseDialog from './components/AddCourseDialog.vue'
+  import EditCourseDialog from './components/EditCourseDialog.vue'
   import { useCourseStore } from './stores/CourseStore'
   import { useModalStore } from './stores/ModalStore'
   import { mapStores, mapWritableState } from 'pinia'
@@ -45,6 +52,7 @@
     components: {
       CourseList,
       AddCourseDialog,
+      EditCourseDialog
     },
     methods: {
       toggleAC() {
