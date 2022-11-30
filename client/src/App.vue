@@ -22,19 +22,21 @@
       </v-btn>
     </v-container>
 
-    <v-container
-      class="ma-0"
-      v-for="course in courseStore.courses"
-      :key="course.id"
-    >
-      <hr/>
+    <v-container>
       <v-dialog
-        v-model="modalStore.editCourseModal"
-        max-width="500px"
+          v-model="modalStore.editCourseModal"
+          max-width="300px"
+        >
+          <EditCourseDialog />
+        </v-dialog>
+      <v-container
+        class="ma-0"
+        v-for="course in courseStore.courses"
+        :key="course.id"
       >
-        <EditCourseDialog :course="course" />
-      </v-dialog>
-      <CourseList :course="course" />
+        <hr/>
+        <CourseList :course="course" />
+      </v-container>
     </v-container>
   </v-app>
 </template>

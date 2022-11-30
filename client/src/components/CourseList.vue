@@ -7,7 +7,7 @@
     <div class="course-buttons">
       <v-btn
         color="warning"
-        @click="e => handleEdit(e)"
+        @click="e => handleEdit(e, this.course.id)"
       >
         Edit
         <v-icon icon="mdi:mdi-pencil" />
@@ -65,7 +65,6 @@
 
 <script>
   import PlayerScores from './PlayerScores.vue'
-  import EditCourseDialog from './EditCourseDialog.vue'
   import AddScoreDialog from './AddScoreDialog.vue'
   import { useCourseStore } from '../stores/CourseStore'
   import { useScoreStore } from '../stores/ScoreStore'
@@ -79,13 +78,13 @@
     ],
     components: {
       PlayerScores,
-      EditCourseDialog,
       AddScoreDialog
     },
     methods: {
-      async handleEdit(e) {
+      async handleEdit(e, courseID) {
         e.preventDefault()
-        console.log(this.course.id)
+
+        this.modalStore.setCourseToEdit(courseID)
         this.modalStore.toggleEditCourse()
       },
       async handleDelete(e) {

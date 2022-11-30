@@ -1,29 +1,36 @@
 <template>
-  <div
-    class="modal-div"
-  >
-    <form>
-      <div class="form-contents">
-        <label>Edit Course Name</label>
-        <input v-model="name" placeholder="Edit Course Name" /><br/>
-      </div>
-      <div class="buttons">
-        <p
-          class="cancel"
+  <v-card>
+    <v-form
+      ref="form"
+      v-model="valid"
+      lazy-validation
+      class="ma-5"
+    >
+      <v-text-field
+        v-model="name"
+        :rules="[v = !!v || 'Name is Required']"
+        label="Edit Course Name"
+        required
+      ></v-text-field>
+      <v-container class="d-flex justify-center align-center">
+        <v-btn
+          class="mr-10"
+          color="black"
           @click="cancelForm()"
         >
           Cancel
-        </p>
-        <button
-          class="submit"
+        </v-btn>
+        <v-btn
+          color="primary"
           @click="e => handleSubmit(e)"
-          :disabled="disableFormSubmit()"
         >
           Submit
-        </button>
-      </div>
-    </form>
-  </div>
+        </v-btn>
+      </v-container>
+    </v-form
+    
+    >
+  </v-card>
 </template>
 
 <script>
@@ -33,39 +40,43 @@
 
   export default {
     name: 'ECForm',
-    props: [
-      'course'
-    ],
     data() {
       return {
-        disabled: true,
-        name: this.course.name
+        valid: false,
+        name: '',
+        course: {}
       }
     },
     methods: {
       async handleSubmit(e) {
         e.preventDefault()
 
-        const id = this.course.id
-        const body = {
-          name: this.name
-        }
+        if (!this.valid) this.$refs.form.validate()
+        else {
+          const id = this.course.id
+          const body = {
+            name: this.name
+          }
 
-        await this.courseStore.editCourse(id, body)
-        this.modalStore.toggleEditCourse()
+          await this.courseStore.editCourse(id, body)
+
+          this.modalStore.toggleEditCourse()
+        }
       },
       cancelForm() {
         this.modalStore.toggleEditCourse()
       },
-      disableFormSubmit() {
-        return (this.name.length < 1)
-      }
     },
     computed: {
       ...mapStores(useCourseStore, useModalStore)
     },
-    created() {
-      console.log('in edit modal', this.course)
+    async created() {
+      const courseID = this.modalStore.courseIDToEdit
+
+      await this.courseStore.getOneCourse(courseID)
+
+      this.course = this.courseStore.courseToEdit.data[0]
+      this.name = this.course.name
     }
   }
 </script>

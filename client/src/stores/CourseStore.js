@@ -5,6 +5,7 @@ import { api } from '../constants'
 export const useCourseStore = defineStore('course', {
   state: () => ({
     courses: [],
+    courseToEdit: {},
     testProp: 'course store'
   }),
   actions: {
@@ -18,20 +19,28 @@ export const useCourseStore = defineStore('course', {
         this.courses.push(course)
       }
     },
+    async getOneCourse(id) {
+      const res = await axios.get(`${api}/courses/${id}`)
+      this.courseToEdit = res
+    },
     async addCourse(body) {
       await axios.post(`${api}/courses`, body)
 
-      await this.getCourses()
+      this.courses.push(body)
     },
     async deleteCourse(id) {
       await axios.delete(`${api}/courses/${id}`)
 
-      await this.getCourses()
+      this.courses = this.courses.filter(course => course.id !== id)
     },
     async editCourse(id, body) {
       await axios.put(`${api}/courses/${id}`, body)
 
-      await this.getCourses()
+      this.courses.forEach(course => {
+        if (course.id === id) {
+          course.name = body.name
+        }
+      })
     }
   }
 })

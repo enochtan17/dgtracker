@@ -5,6 +5,7 @@ export const useModalStore = defineStore('modal', {
     addCourseModal: false,
     editCourseModal: false,
     addScoreModal: false,
+    courseIDToEdit: null
   }),
   actions: {
     toggleAddCourse() {
@@ -16,5 +17,8 @@ export const useModalStore = defineStore('modal', {
     toggleAddScore() {
       this.addScoreModal = !this.addScoreModal
     },
+    setCourseToEdit(id) {
+      this.courseIDToEdit = id
+    }
   }
 })

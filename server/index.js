@@ -15,6 +15,21 @@ app.get('/courses', async (req, res) => {
     const allCourses = await pool.query("SELECT * FROM courses")  // response OBJECT
     res.json(allCourses.rows)
   } catch (err) {
+    console.error('ERROR IN GET COURSES: ', err.message)
+  }
+})
+
+// GET a course
+app.get('/courses/:id', async (req, res) => {
+  try {
+    const { id } = req.params
+
+    const course = await pool.query("SELECT * FROM courses WHERE id = $1",
+      [ id ]
+    )
+
+    res.json(course.rows)
+  } catch (err) {
     console.error('ERROR IN GET COURSE: ', err.message)
   }
 })
