@@ -1,67 +1,190 @@
 <template>
-  <div
-    class="modal-div"
-  >
-    <form>
-      <div class="form-contents">
-        <h4>Add Your Scores</h4>
-        <label>Name</label>
-        <input v-model="name" placeholder="Your Name" /><br/>
-        <label>Hole 1</label>
-        <input v-model.number="holeOne" placeholder="integers only" /><br/>
-        <label>Hole 2</label>
-        <input v-model.number="holeTwo" placeholder="integers only" /><br/>
-        <label>Hole 3</label>
-        <input v-model.number="holeThree" placeholder="integers only" /><br/>
-        <label>Hole 4</label>
-        <input v-model.number="holeFour" placeholder="integers only" /><br/>
-        <label>Hole 5</label>
-        <input v-model.number="holeFive" placeholder="integers only" /><br/>
-        <label>Hole 6</label>
-        <input v-model.number="holeSix" placeholder="integers only" /><br/>
-        <label>Hole 7</label>
-        <input v-model.number="holeSeven" placeholder="integers only" /><br/>
-        <label>Hole 8</label>
-        <input v-model.number="holeEight" placeholder="integers only" /><br/>
-        <label>Hole 9</label>
-        <input v-model.number="holeNine" placeholder="integers only" /><br/>
-        <label>Hole 10</label>
-        <input v-model.number="holeTen" placeholder="integers only" /><br/>
-        <label>Hole 11</label>
-        <input v-model.number="holeEleven" placeholder="integers only" /><br/>
-        <label>Hole 12</label>
-        <input v-model.number="holeTwelve" placeholder="integers only" /><br/>
-        <label>Hole 13</label>
-        <input v-model.number="holeThirteen" placeholder="integers only" /><br/>
-        <label>Hole 14</label>
-        <input v-model.number="holeFourteen" placeholder="integers only" /><br/>
-        <label>Hole 15</label>
-        <input v-model.number="holeFifteen" placeholder="integers only" /><br/>
-        <label>Hole 16</label>
-        <input v-model.number="holeSixteen" placeholder="integers only" /><br/>
-        <label>Hole 17</label>
-        <input v-model.number="holeSeventeen" placeholder="integers only" /><br/>
-        <label>Hole 18</label>
-        <input v-model.number="holeEighteen" placeholder="integers only" /><br/>
-      </div>
-      <div class="buttons">
-        <p
-          class="cancel"
-          @click="cancelForm()"
+  <v-card>
+    <v-form
+      ref="form"
+      v-model="valid"
+      lazy-validation
+      class="ma-5"
+    >
+      <v-text-field
+        v-model="name"
+        :rules="[v => !!v || 'Name is Required']"
+        label="Your Name"
+        required
+      ></v-text-field>
+      <v-container class="text-center mt-0 pt-0">Enter Scores Below</v-container>
+      <v-container
+        class="d-flex pa-0"
+      >
+        <v-text-field
+          v-model="holeOne"
+          class="mr-4"
+          :rules="[v => !!v || 'Required']"
+          label="Hole 1"
+          required  
+        ></v-text-field>
+        <v-text-field
+          v-model="holeTwo"
+          class="mr-4"
+          :rules="[v => !!v || 'Required']"
+          label="Hole 2"
+          required  
+        ></v-text-field>
+        <v-text-field
+          v-model="holeThree"
+          :rules="[v => !!v || 'Required']"
+          label="Hole 3"
+          required  
+        ></v-text-field>
+      </v-container>
+      <v-container
+        class="d-flex pa-0"
+      >
+        <v-text-field
+          v-model="holeFour"
+          class="mr-4"
+          :rules="[v => !!v || 'Required']"
+          label="Hole 4"
+          required  
+        ></v-text-field>
+        <v-text-field
+          v-model="holeFive"
+          class="mr-4"
+          :rules="[v => !!v || 'Required']"
+          label="Hole 5"
+          required  
+        ></v-text-field>
+        <v-text-field
+          v-model="holeSix"
+          :rules="[v => !!v || 'Required']"
+          label="Hole 6"
+          required  
+        ></v-text-field>
+      </v-container>
+      <v-container
+        class="d-flex pa-0"
+      >
+        <v-text-field
+          v-model="holeSeven"
+          class="mr-4"
+          :rules="[v => !!v || 'Required']"
+          label="Hole 7"
+          required  
+        ></v-text-field>
+        <v-text-field
+          v-model="holeEight"
+          class="mr-4"
+          :rules="[v => !!v || 'Required']"
+          label="Hole 8"
+          required  
+        ></v-text-field>
+        <v-text-field
+          v-model="holeNine"
+          :rules="[v => !!v || 'Required']"
+          label="Hole 9"
+          required  
+        ></v-text-field>
+      </v-container>
+      <v-container
+        class="d-flex pa-0"
+      >
+        <v-text-field
+          v-model="holeTen"
+          class="mr-4"
+          :rules="[v => !!v || 'Required']"
+          label="Hole 10"
+          required  
+        ></v-text-field>
+        <v-text-field
+          v-model="holeEleven"
+          class="mr-4"
+          :rules="[v => !!v || 'Required']"
+          label="Hole 11"
+          required  
+        ></v-text-field>
+        <v-text-field
+          v-model="holeTwelve"
+          :rules="[v => !!v || 'Required']"
+          label="Hole 12"
+          required  
+        ></v-text-field>
+      </v-container>
+      <v-container
+        class="d-flex pa-0"
+      >
+        <v-text-field
+          v-model="holeThirteen"
+          class="mr-4"
+          :rules="[v => !!v || 'Required']"
+          label="Hole 13"
+          required  
+        ></v-text-field>
+        <v-text-field
+          v-model="holeFourteen"
+          class="mr-4"
+          :rules="[v => !!v || 'Required']"
+          label="Hole 14"
+          required  
+        ></v-text-field>
+        <v-text-field
+          v-model="holeFifteen"
+          :rules="[v => !!v || 'Required']"
+          label="Hole 15"
+          required  
+        ></v-text-field>
+      </v-container>
+      <v-container
+        class="d-flex pa-0"
+      >
+        <v-text-field
+          v-model="holeSixteen"
+          class="mr-4"
+          :rules="[v => !!v || 'Required']"
+          label="Hole 16"
+          required  
+        ></v-text-field>
+        <v-text-field
+          v-model="holeSeventeen"
+          class="mr-4"
+          :rules="[v => !!v || 'Required']"
+          label="Hole 17"
+          required  
+        ></v-text-field>
+        <v-text-field
+          v-model="holeEighteen"
+          :rules="[v => !!v || 'Required']"
+          label="Hole 18"
+          required  
+        ></v-text-field>
+      </v-container>
+      <v-container
+        class="d-flex pa-0 justify-space-around"
+      >
+        <v-btn
+          class="mr-4"
+          color="black"
+          @click="cancelForm"
         >
           Cancel
-        </p>
-        <button
-          class="submit"
+        </v-btn>
+
+        <v-btn
+          color="error"
+          class="mr-4"
+          @click="reset"
+        >
+          Reset Form
+        </v-btn>
+
+        <v-btn
+          color="primary"
           @click="e => handleSubmit(e)"
-          :disabled="disableFormSubmit()"
         >
           Submit
-        </button>
-      </div>
-    </form>
-  </div>
-  <hr/>
+        </v-btn>
+      </v-container>
+    </v-form>
+  </v-card>
 </template>
 
 <script>
@@ -76,7 +199,7 @@
     ],
     data() {
       return {
-        disabled: true,
+        valid: false,
         name: '',
         holeOne: null,
         holeTwo: null,
@@ -102,111 +225,44 @@
       async handleSubmit(e) {
         e.preventDefault()
 
-        const courseID = this.course.id
+        if (!this.valid) this.$refs.form.validate()
+        else {
+          const courseID = this.course.id
 
-        const body = {
-          course_id: courseID,
-          player: this.name
+          const body = {
+            course_id: courseID,
+            player: this.name
+          }
+
+          const scores = [
+            parseInt(this.holeOne), parseInt(this.holeTwo), parseInt(this.holeThree), parseInt(this.holeFour), parseInt(this.holeFive),
+            parseInt(this.holeSix), parseInt(this.holeSeven), parseInt(this.holeEight), parseInt(this.holeNine), parseInt(this.holeTen),
+            parseInt(this.holeEleven), parseInt(this.holeTwelve), parseInt(this.holeThirteen), parseInt(this.holeFourteen),
+            parseInt(this.holeFifteen), parseInt(this.holeSixteen), parseInt(this.holeSeventeen), parseInt(this.holeEighteen)
+          ]
+
+          const total = scores.reduce((sum, score) => {
+            return sum + score
+          }, 0)
+
+          body['scores'] = scores
+          body['total'] = total
+
+          await this.scoreStore.addScore(body)
+
+          this.modalStore.toggleAddScore()
         }
 
-        const scores = [
-          this.holeOne, this.holeTwo, this.holeThree, this.holeFour, this.holeFive,
-          this.holeSix, this.holeSeven, this.holeEight, this.holeNine, this.holeTen,
-          this.holeEleven, this.holeTwelve, this.holeThirteen, this.holeFourteen,
-          this.holeFifteen, this.holeSixteen, this.holeSeventeen, this.holeEighteen
-        ]
-
-        const total = scores.reduce((sum, score) => {
-          return sum + score
-        }, 0)
-
-        body['scores'] = scores
-        body['total'] = total
-
-        await this.scoreStore.addScore(body)
-
-        this.modalStore.toggleAddScore()
       },
       cancelForm() {
         this.modalStore.toggleAddScore()
       },
-      disableFormSubmit() {
-        return (this.name.length < 1
-          || this.holeOne < 1 || this.holeTwo < 1
-          || this.holeThree < 1 || this.holeFour < 1
-          || this.holeFive < 1 || this.holeSix < 1
-          || this.holeSeven < 1 || this.holeEight < 1
-          || this.holeNine < 1 || this.holeTen < 1
-          || this.holeEleven < 1 || this.holeTwelve < 1
-          || this.holeThirteen < 1 || this.holeFourteen < 1
-          || this.holeFifteen < 1 || this.holeSixteen < 1
-          || this.holeSeventeen < 1 || this.holeEighteen < 1)
-      }
+      reset() {
+        this.$refs.form.reset()
+      },
     },
     computed: {
       ...mapStores(useScoreStore, useModalStore),
     }
   }
 </script>
-
-<style scoped>
-  .modal-div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .course-form {
-    color: whitesmoke;
-    height: 350px;
-    margin: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 10px;
-    width: 400px;
-    background-color: rgb(69, 69, 69);
-    z-index: 100;
-    align-self: center;
-    overflow: scroll;
-  }
-
-  .form-contents input {
-    padding: 5px;
-    margin-bottom: 5px;
-    background-color: whitesmoke;
-    border-radius: 10px;
-    border: 1px solid black;
-  }
-
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .form-contents h4{
-    text-align: center;
-  }
-  .form-contents label {
-    margin: 5px;
-  }
-
-  .cancel {
-    border: 1px solid black;
-    border-radius: 5px;
-    width: 100px;
-    font-weight: bold;
-    text-align: center;
-    cursor: pointer;
-  }
-
-  .submit {
-    cursor: pointer;
-    margin-bottom: 10px;
-    width: 100px;
-  }
-</style>

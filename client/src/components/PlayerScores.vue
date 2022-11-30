@@ -1,12 +1,21 @@
 <template>
-  <h4>{{ entry.player }}</h4>
+  <v-container class="pa-0">
+    <v-card class="pa-2 d-flex justify-space-between align-center">
+      <div>
+        <h4>{{ entry.player }}</h4>
 
-  <div>Scores: {{ entry.scores }}</div>
-  <div>Total: {{ entry.total }}</div>
-  <button
-    style="cursor: pointer;"
-    @click="e => handleDelete(e)"
-  >Delete Entry</button>
+        <div>Scores: {{ entry.scores }}</div>
+        <div>Total: {{ entry.total }}</div>
+      </div>
+      <v-btn
+        color="error"
+        @click="e => handleDelete(e)"
+      >
+        Delete Entry
+        <v-icon icon="mdi:mdi-delete" />
+      </v-btn>
+    </v-card>
+  </v-container>
   <hr/>
 </template>
 

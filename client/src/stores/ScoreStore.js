@@ -36,12 +36,4 @@ export const useScoreStore = defineStore('score', {
       await this.getScores(body.course_id)
     }
   },
-  // getters: {
-  //   getScoreFromCourse(title) {
-  //     console.log('getter arg', typeof title)
-  //     const courseName = title.course.courses
-  //     console.log('in getter', courseName)
-  //     // return this.scores[courseName]
-  //   }
-  // }
 })

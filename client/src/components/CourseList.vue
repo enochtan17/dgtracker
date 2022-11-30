@@ -71,23 +71,24 @@
   <!-- player scores of course -->
   <v-btn
     style="cursor: pointer;"
+    color="info"
     @click="e => openAddScore(e)"
   >
-    Add your score to {{ course.name }}
+    Add your score to {{ course.name }} 
+    <v-icon icon="mdi:mdi-plus-box-multiple" />
   </v-btn>
 
-  <div
-    v-if="modalStore.addScoreModal"
+  <v-dialog
+    v-model="modalStore.addScoreModal"
   >
     <AddScoreDialog :course="course" />
-  </div>
+  </v-dialog>
 
-  <div
-    style="margin-left: 10px;"
+  <v-container
     v-for="entry in this.scoreStore.scores[this.course.name]"
   >
     <PlayerScores :course="course" :entry="entry" />
-  </div>
+  </v-container>
 </template>
 
 <script>
