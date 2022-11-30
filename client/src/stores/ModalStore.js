@@ -17,8 +17,5 @@ export const useModalStore = defineStore('modal', {
     toggleAddScore() {
       this.addScoreModal = !this.addScoreModal
     },
-    setCourseToEdit(id) {
-      this.courseIDToEdit = id
-    }
   }
 })

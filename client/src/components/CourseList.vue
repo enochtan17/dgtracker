@@ -124,7 +124,9 @@
       async handleEdit(e, courseID) {
         e.preventDefault()
 
-        this.modalStore.setCourseToEdit(courseID)
+        this.modalStore.$patch({
+          courseIDToEdit: courseID
+        })
         this.modalStore.toggleEditCourse()
       },
       handleDelete(e) {
@@ -133,7 +135,9 @@
       },
       openAddScore(e, courseID) {
         e.preventDefault()
-        this.modalStore.setCourseToEdit(courseID)
+        this.modalStore.$patch({
+          courseIDToEdit: courseID
+        })
         this.modalStore.toggleAddScore()
       },
       alertCancel(e) {
@@ -142,7 +146,11 @@
       },
       async alertDelete(e) {
         e.preventDefault()
-        await this.courseStore.deleteCourse(this.course.id)
+
+        const hasScores = this.scoreStore.scores[this.course.name].length
+
+        if (hasScores) alert('Cannot delete course with existing scores!')
+        else await this.courseStore.deleteCourse(this.course.id)
         this.deleteWarning = false
       }
     },
