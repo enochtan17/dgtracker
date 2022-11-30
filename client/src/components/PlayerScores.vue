@@ -1,4 +1,28 @@
 <template>
+  <v-alert
+    v-if="this.deleteWarning"
+    type="warning"
+    title="Warning!"
+    icon="mdi-alert-octagram"
+    color="error"
+  >
+    <div>You are about to delete {{ this.entry.player }}'s scores. Are you sure you want to proceed?</div>
+    <div class="d-flex justify-end">
+      <v-btn
+        style="color: black;"
+        class="mr-5"
+        @click="e => alertCancel(e)"
+        >
+        Cancel
+      </v-btn>
+      <v-btn
+        style="color: black;"
+        @click="e => alertDelete(e)"
+      >
+        Confirm Delete
+      </v-btn>
+    </div>
+  </v-alert>
   <v-container class="pa-0">
     <v-card class="pa-2 d-flex justify-space-between align-center">
       <div>
@@ -29,25 +53,35 @@
       'course',
       'entry'
     ],
+    data () {
+      return {
+        deleteWarning: false,
+      }
+    },
     methods: {
       async getAllScoresofOneCourse(courseID) {
         await this.scoreStore.getScores(courseID)
       },
-      async handleDelete(e) {
+      handleDelete(e) {
+        e.preventDefault()
+
+        this.deleteWarning = true
+      },
+      alertCancel(e) {
+        e.preventDefault()
+        this.deleteWarning = false
+      },
+      async alertDelete(e) {
         e.preventDefault()
 
         const playerID = this.entry.id
         const courseID = this.course.id
 
-        if (confirm('Are you sure you want to delete your round?')) {
-          await this.scoreStore.deleteScore(playerID, courseID)
-        }
+        await this.scoreStore.deleteScore(playerID, courseID)
       }
     },
     computed: {
       ...mapStores(useScoreStore),
     },
-    async created() {
-    }
   }
 </script>

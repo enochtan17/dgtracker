@@ -20,9 +20,9 @@
         style="color: black;"
         @click="e => alertDelete(e)"
       >
-      Confirm Delete
-    </v-btn>
-  </div>
+        Confirm Delete
+      </v-btn>
+    </div>
   </v-alert>
   <v-container class="d-flex justify-space-between align-center">
     <h2>
