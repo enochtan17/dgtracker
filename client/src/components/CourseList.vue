@@ -1,11 +1,38 @@
 <template>
   <!-- course name -->
-  <div class="course-bar">
-    <h4>
-      {{ course.name }}
-    </h4>
-    <div class="course-buttons">
+  <v-alert
+    v-if="this.deleteWarning"
+    type="warning"
+    title="Warning!"
+    icon="mdi-alert-octagram"
+    color="error"
+  >
+    <div>You are about to delete {{ this.course.name }}. Are you sure you want to proceed?</div>
+    <div class="d-flex justify-end">
       <v-btn
+        style="color: black;"
+        class="mr-5"
+        @click="e => alertCancel(e)"
+        >
+        Cancel
+      </v-btn>
+      <v-btn
+        style="color: black;"
+        @click="e => alertDelete(e)"
+      >
+      Confirm Delete
+    </v-btn>
+  </div>
+  </v-alert>
+  <v-container class="d-flex justify-space-between align-center">
+    <h2>
+      {{ course.name }}
+    </h2>
+    <div
+      class="d-flex flex-column"
+    >
+      <v-btn
+        class="mb-2"
         color="warning"
         @click="e => handleEdit(e, this.course.id)"
       >
@@ -20,7 +47,7 @@
         <v-icon icon="mdi:mdi-delete" />
       </v-btn>
     </div>
-  </div>
+  </v-container>
 
   <hr />
   <!-- scores -->
@@ -76,6 +103,11 @@
     props: [
       'course',
     ],
+    data () {
+      return {
+        deleteWarning: false,
+      }
+    },
     components: {
       PlayerScores,
       AddScoreDialog
@@ -87,15 +119,22 @@
         this.modalStore.setCourseToEdit(courseID)
         this.modalStore.toggleEditCourse()
       },
-      async handleDelete(e) {
+      handleDelete(e) {
         e.preventDefault()
-        if (confirm('Are you sure you want to delete this course?')) {
-          await this.courseStore.deleteCourse(this.course.id)
-        }
+        this.deleteWarning = true
       },
       openAddScore(e) {
         e.preventDefault()
         this.modalStore.toggleAddScore()
+      },
+      alertCancel(e) {
+        e.preventDefault()
+        this.deleteWarning = false
+      },
+      async alertDelete(e) {
+        e.preventDefault()
+        await this.courseStore.deleteCourse(this.course.id)
+        this.deleteWarning = false
       }
     },
     computed: {
@@ -103,29 +142,6 @@
     },
     async created() {
       await this.scoreStore.getScores(this.course.id)
-
-      // const rawData = this.scoreStore.scores[this.course.name]
-
-      // const theseScores = Object.values(rawData)
-      // console.log('testing?', theseScores)
     }
   }
 </script>
-
-<style scoped>
-  .course-bar {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-
-  .course-buttons {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .course-buttons button {
-    margin: 5px;
-    cursor: pointer;
-  }
-</style>

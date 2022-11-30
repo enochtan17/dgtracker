@@ -7,9 +7,11 @@
       <AddCourseDialog />
     </v-dialog>
 
-    <v-container class="d-flex justify-space-between align-center">
+    <v-container class="d-flex justify-space-between align-center ">
       <h1 style="margin-left: 10px;">
+        <v-icon icon="mdi:mdi-penguin" />
         Disc Golf Score Tracker
+        <v-icon icon="mdi:mdi-shark-fin" />
       </h1>
       <v-btn
         style="cursor: pointer; margin-left: 10px;"
@@ -17,7 +19,7 @@
         color="green"
       >
         Add Course
-        <v-icon icon="mdi:mdi-plus" />
+        <v-icon icon="mdi:mdi-plus-box-multiple" />
       </v-btn>
     </v-container>
 
