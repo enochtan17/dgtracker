@@ -27,9 +27,7 @@
           Submit
         </v-btn>
       </v-container>
-    </v-form
-    
-    >
+    </v-form>
   </v-card>
 </template>
 
@@ -80,61 +78,3 @@
     }
   }
 </script>
-
-<style scoped>
-  .modal-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .course-form {
-    color: whitesmoke;
-    height: 350px;
-    margin: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 10px;
-    width: 400px;
-    background-color: rgb(69, 69, 69);
-    z-index: 100;
-    align-self: center;
-    overflow: scroll;
-  }
-
-  .form-contents input {
-    padding: 5px;
-    margin-bottom: 5px;
-    background-color: whitesmoke;
-    border-radius: 10px;
-    border: 1px solid black;
-  }
-
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .form-contents label {
-    margin: 5px;
-  }
-
-  .cancel {
-    border: 1px solid black;
-    border-radius: 5px;
-    width: 100px;
-    font-weight: bold;
-    text-align: center;
-    cursor: pointer;
-  }
-
-  .submit {
-    cursor: pointer;
-    margin-bottom: 10px;
-    width: 100px;
-  }
-</style>
