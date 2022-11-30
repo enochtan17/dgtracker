@@ -52,20 +52,25 @@
   <v-divider></v-divider>
   <!-- scores -->
   <v-container>
-    <div
-      v-for="(hole, idx) in course.scores"
-      :key="idx"
-    >
-      <div>
-        Hole {{ idx + 1 }}
-      </div>
-      {{ hole }}
-    </div>
+    <v-row>
+      <v-col
+        v-for="(hole, idx) in course.scores"
+        :key="idx"
+        class="text-center"
+      >
+        <div>
+          Hole {{ idx + 1 }}
+        </div>
+        <v-divider></v-divider>
+        {{ hole }}
+        <!-- <v-divider vertical class="mx-4"></v-divider> -->
+      </v-col>
+    </v-row>
   </v-container>
 
   <!-- total -->
   <div style="margin-left: 10px;">
-    Total: {{ course.total }}
+    Par: {{ course.total }}
   </div>
 
   <v-divider></v-divider>
