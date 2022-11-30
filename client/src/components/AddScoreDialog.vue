@@ -227,7 +227,7 @@
 
         if (!this.valid) this.$refs.form.validate()
         else {
-          const courseID = this.course.id
+          const courseID = this.modalStore.courseIDToEdit
 
           const body = {
             course_id: courseID,
@@ -263,6 +263,6 @@
     },
     computed: {
       ...mapStores(useScoreStore, useModalStore),
-    }
+    },
   }
 </script>

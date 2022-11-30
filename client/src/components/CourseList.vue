@@ -79,7 +79,7 @@
   <v-btn
     class="mt-1"
     color="info"
-    @click="e => openAddScore(e)"
+    @click="e => openAddScore(e, this.course.id)"
   >
     Add your score to {{ course.name }} 
     <v-icon icon="mdi:mdi-plus-box-multiple" />
@@ -131,8 +131,9 @@
         e.preventDefault()
         this.deleteWarning = true
       },
-      openAddScore(e) {
+      openAddScore(e, courseID) {
         e.preventDefault()
+        this.modalStore.setCourseToEdit(courseID)
         this.modalStore.toggleAddScore()
       },
       alertCancel(e) {
