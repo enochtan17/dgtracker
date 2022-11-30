@@ -1,5 +1,7 @@
 <template>
-  <v-app>
+  <v-app
+    style="background-color: rgb(200, 200, 200);"
+  >
     <v-dialog
       v-model="modalStore.addCourseModal"
       max-width="500px"

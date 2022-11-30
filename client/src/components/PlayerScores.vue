@@ -24,7 +24,10 @@
     </div>
   </v-alert>
   <v-container class="pa-0">
-    <v-card class="pa-2 d-flex justify-space-between align-center">
+    <v-card
+      class="pa-2 d-flex justify-space-between align-center"
+      style="background-color: rgb(230, 230, 230);"
+    >
       <div>
         <h4>{{ entry.player }}</h4>
 
