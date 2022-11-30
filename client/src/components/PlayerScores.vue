@@ -40,7 +40,7 @@
       </v-btn>
     </v-card>
   </v-container>
-  <hr/>
+  <v-divider></v-divider>
 </template>
 
 <script>

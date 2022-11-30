@@ -49,28 +49,30 @@
     </div>
   </v-container>
 
-  <hr />
+  <v-divider></v-divider>
   <!-- scores -->
-  <div style="margin-left: 10px;">
+  <v-container>
     <div
       v-for="(hole, idx) in course.scores"
       :key="idx"
     >
-      <div>Hole {{ idx + 1 }}</div>
+      <div>
+        Hole {{ idx + 1 }}
+      </div>
       {{ hole }}
     </div>
-  </div>
+  </v-container>
 
   <!-- total -->
   <div style="margin-left: 10px;">
     Total: {{ course.total }}
   </div>
 
-  <hr/>
+  <v-divider></v-divider>
 
   <!-- player scores of course -->
   <v-btn
-    style="cursor: pointer;"
+    class="mt-1"
     color="info"
     @click="e => openAddScore(e)"
   >

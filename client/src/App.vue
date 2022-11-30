@@ -35,7 +35,7 @@
         v-for="course in courseStore.courses"
         :key="course.id"
       >
-        <hr/>
+        <v-divider></v-divider>
         <CourseList :course="course" />
       </v-container>
     </v-container>
