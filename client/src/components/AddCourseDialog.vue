@@ -22,7 +22,7 @@
           :items="items"
           :rules="[v => !!v || 'Required']"
           label="Hole 1"
-          required  
+          required
         ></v-select>
         <v-select
           v-model="holeTwo"

@@ -8,7 +8,7 @@
     >
       <v-text-field
         v-model="name"
-        :rules="[v = !!v || 'Name is Required']"
+        :rules="[v => !!v || 'Name is Required']"
         label="Edit Course Name"
         required
       ></v-text-field>
