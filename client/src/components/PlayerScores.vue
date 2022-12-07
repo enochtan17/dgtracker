@@ -23,7 +23,7 @@
       </v-btn>
     </div>
   </v-alert>
-  <v-container class="pa-0">
+  <div class="pa-0">
     <v-card
       class="pa-2 d-flex justify-space-between align-center"
       style="background-color: rgb(230, 230, 230);"
@@ -42,7 +42,7 @@
         <v-icon icon="mdi:mdi-delete" />
       </v-btn>
     </v-card>
-  </v-container>
+  </div>
   <v-divider></v-divider>
 </template>
 

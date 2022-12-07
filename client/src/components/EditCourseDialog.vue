@@ -12,7 +12,7 @@
         label="Edit Course Name"
         required
       ></v-text-field>
-      <v-container class="d-flex justify-center align-center">
+      <div class="d-flex justify-center align-center">
         <v-btn
           class="mr-10"
           color="black"
@@ -26,7 +26,7 @@
         >
           Submit
         </v-btn>
-      </v-container>
+      </div>
     </v-form>
   </v-card>
 </template>
