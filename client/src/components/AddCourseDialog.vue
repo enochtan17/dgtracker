@@ -12,8 +12,8 @@
         label="Course Name"
         required
       ></v-text-field>
-      <v-container class="text-center mt-0 pt-0">Enter Pars Below</v-container>
-      <v-container
+      <div class="text-center mt-0 pt-0">Enter Pars Below</div>
+      <div
         class="d-flex pa-0"
       >
         <v-select
@@ -39,8 +39,8 @@
           label="Hole 3"
           required  
         ></v-select>
-      </v-container>
-      <v-container
+      </div>
+      <div
         class="d-flex pa-0"
       >
         <v-select
@@ -66,8 +66,8 @@
           label="Hole 6"
           required  
         ></v-select>
-      </v-container>
-      <v-container
+      </div>
+      <div
         class="d-flex pa-0"
       >
         <v-select
@@ -93,8 +93,8 @@
           label="Hole 9"
           required  
         ></v-select>
-      </v-container>
-      <v-container
+      </div>
+      <div
         class="d-flex pa-0"
       >
         <v-select
@@ -120,8 +120,8 @@
           label="Hole 12"
           required  
         ></v-select>
-      </v-container>
-      <v-container
+      </div>
+      <div
         class="d-flex pa-0"
       >
         <v-select
@@ -147,8 +147,8 @@
           label="Hole 15"
           required  
         ></v-select>
-      </v-container>
-      <v-container
+      </div>
+      <div
         class="d-flex pa-0"
       >
         <v-select
@@ -174,8 +174,8 @@
           label="Hole 18"
           required  
         ></v-select>
-      </v-container>
-      <v-container
+      </div>
+      <div
         class="d-flex pa-0 justify-space-around"
       >
         <v-btn
@@ -200,7 +200,7 @@
         >
           Submit
         </v-btn>
-      </v-container>
+      </div>
     </v-form>
   </v-card>
 </template>

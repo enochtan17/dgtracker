@@ -12,8 +12,8 @@
         label="Your Name"
         required
       ></v-text-field>
-      <v-container class="text-center mt-0 pt-0">Enter Scores Below</v-container>
-      <v-container
+      <div class="text-center mt-0 pt-0">Enter Scores Below</div>
+      <div
         class="d-flex pa-0"
       >
         <v-text-field
@@ -36,8 +36,8 @@
           label="Hole 3"
           required  
         ></v-text-field>
-      </v-container>
-      <v-container
+      </div>
+      <div
         class="d-flex pa-0"
       >
         <v-text-field
@@ -60,8 +60,8 @@
           label="Hole 6"
           required  
         ></v-text-field>
-      </v-container>
-      <v-container
+      </div>
+      <div
         class="d-flex pa-0"
       >
         <v-text-field
@@ -84,8 +84,8 @@
           label="Hole 9"
           required  
         ></v-text-field>
-      </v-container>
-      <v-container
+      </div>
+      <div
         class="d-flex pa-0"
       >
         <v-text-field
@@ -108,8 +108,8 @@
           label="Hole 12"
           required  
         ></v-text-field>
-      </v-container>
-      <v-container
+      </div>
+      <div
         class="d-flex pa-0"
       >
         <v-text-field
@@ -132,8 +132,8 @@
           label="Hole 15"
           required  
         ></v-text-field>
-      </v-container>
-      <v-container
+      </div>
+      <div
         class="d-flex pa-0"
       >
         <v-text-field
@@ -156,8 +156,8 @@
           label="Hole 18"
           required  
         ></v-text-field>
-      </v-container>
-      <v-container
+      </div>
+      <div
         class="d-flex pa-0 justify-space-around"
       >
         <v-btn
@@ -182,7 +182,7 @@
         >
           Submit
         </v-btn>
-      </v-container>
+      </div>
     </v-form>
   </v-card>
 </template>
